@@ -2,10 +2,24 @@
 
 filename=newdiscord.deb
 
-wget -O $filename https://discord.com/api/download\?platform\=linux\&format\=deb
+echo "🌐 Downloading Discord from official website"
+wget --progress=bar:force -O $filename https://discord.com/api/download\?platform\=linux\&format\=deb
 
-sudo apt install ./$filename
+if [ ! -f $filename ]; then
+    echo "Failed to download Discord"
+    exit 1
+fi
 
+# Install the downloaded package or update the existing one
+if dpkg -l discord > /dev/null 2>&1; then
+    echo "🔼 Updating Discord"
+    sudo apt install --reinstall ./$filename
+else
+    echo "🔽 Installing Discord"
+    sudo apt install ./$filename
+fi
+
+echo "🗑️ Cleaning up"
 rm $filename
 
-echo "Discord updated"
+echo "✅ Discord updated"
