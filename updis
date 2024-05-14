@@ -1,0 +1,11 @@
+#!/bin/bash
+
+filename=newdiscord.deb
+
+wget -O $filename https://discord.com/api/download\?platform\=linux\&format\=deb
+
+sudo apt install ./$filename
+
+rm $filename
+
+echo "Discord updated"
