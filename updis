@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Check if the current version of Discord is up to date
+if dpkg -l discord > /dev/null 2>&1; then
+    current_version=$(dpkg -s discord | grep Version | cut -d ' ' -f 2)
+    latest_version=$(curl -s https://discord.com/api/download\?platform\=linux\&format\=deb | grep -oP 'discord-[0-9]+\.[0-9]+\.[0-9]+' | head -1 | cut -d '-' -f 2)
+
+    if [ "$current_version" = "$latest_version" ]; then
+        echo "Discord is already up to date"
+        exit 0
+    fi
+fi  
+
 filename=newdiscord.deb
 
 echo "🌐 Downloading Discord from official website"
