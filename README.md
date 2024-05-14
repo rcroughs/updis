@@ -5,7 +5,7 @@ Little tool to update Discord on Debian-based systems.
 
 ## Installation
 ```bash
-git clone https://github.com/rcroughs/updis
+git clone https://github.com/rcroughs/updis.git
 cd updis
 sudo make install
 ```
