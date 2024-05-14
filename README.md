@@ -1,6 +1,8 @@
 # `updis`
 Little tool to update Discord on Debian-based systems.
+
 ![VERY ANNOYING IMAGE](https://i.stack.imgur.com/TwcBH.png)
+
 ## Installation
 ```bash
 git clone https://github.com/rcroughs/updis
